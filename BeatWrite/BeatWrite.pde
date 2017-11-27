@@ -21,7 +21,7 @@ int ledPin5 = 10;
 float kickSize, snareSize, hatSize, kick2Size, hat2Size, box ;
  
 void setup() {
-  size(800, 500, P3D);
+  size(1280, 800, P3D);
   
   minim = new Minim(this);
   arduino = new Arduino(this, Arduino.list()[2], 57600);
@@ -43,6 +43,7 @@ void setup() {
   // make a new beat listener, so that we won't miss any buffers for the analysis
   bl = new BeatListener(beat, song);  
   textFont(createFont("Arial Black", 16));
+
   textAlign(CENTER);
   
   
@@ -54,28 +55,28 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(0);
   fill(0);
   
   if(beat.isKick()) {
       arduino.digitalWrite(ledPin, Arduino.HIGH);   // set the LED on
-      kickSize = 60;
+      kickSize = 90;
   }
   if(beat.isKick()) {
       arduino.digitalWrite(ledPin4, Arduino.HIGH);   // set the LED on
-      kick2Size = 60;
+      kick2Size = 90;
   }
   if(beat.isSnare()) {
       arduino.digitalWrite(ledPin2, Arduino.HIGH);   // set the LED on
-      snareSize = 60;
+      snareSize = 90;
   }
   if(beat.isHat()) {
       arduino.digitalWrite(ledPin3, Arduino.HIGH);   // set the LED on
-      hatSize = 60;
+      hatSize = 90;
   }
   if(beat.isHat()) {
       arduino.digitalWrite(ledPin5, Arduino.HIGH);   // set the LED on
-      hat2Size = 60;
+      hat2Size = 90;
   }
   arduino.digitalWrite(ledPin, Arduino.LOW);    // set the LED off
   arduino.digitalWrite(ledPin2, Arduino.LOW);    // set the LED off
@@ -84,24 +85,25 @@ void draw() {
   arduino.digitalWrite(ledPin5, Arduino.LOW);    // set the LED off
 fill(random(255),random(255),random(255));
   textSize(kickSize);
-  text("Poké", width/4, height/2);
+  text("Pika!", width/4, height/2);
   textSize(kick2Size);
-  text("Poké", width/4, height/2);
+  text("Pika!", width/4, height/2);
   textSize(snareSize);
-  text("Poké", width/2, height/2);
+  text("Pika!", width/2, height/2);
   textSize(hatSize);
-  text("Poké", 3*width/4, height/2);
+  text("Pikachu!", 3*width/4, height/2);
   textSize(hat2Size);
-  text("Poké", 3*width/4, height/2);
+  text("Pikachu!", 3*width/4, height/2);
+ 
   
   
-  kickSize = constrain(kickSize * 0.95, 16, 60);
-  kick2Size = constrain(kickSize * 0.95, 16, 60);
+  kickSize = constrain(kickSize * 0.95, 16, 90);
+  kick2Size = constrain(kickSize * 0.95, 16, 90);
 
-  snareSize = constrain(snareSize * 0.95, 16, 60);
+  snareSize = constrain(snareSize * 0.95, 16, 90);
   
-  hatSize = constrain(hatSize * 0.95, 16, 60);
-  hat2Size = constrain(hatSize * 0.95, 16, 60);
+  hatSize = constrain(hatSize * 0.95, 16, 90);
+  hat2Size = constrain(hatSize * 0.95, 16, 90);
 
 }
 
